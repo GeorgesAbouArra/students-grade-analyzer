@@ -1,0 +1,36 @@
+#--------- THE NUMBER OF STUDENTS-----------
+while True:
+    user_input=input("enter the number of students you want to grade:")
+    if user_input.isdigit() and user_input > "0":#conditionsForTheNumberOfStudents
+        number_of_students=int(user_input)
+        print("thank you,you entered the number",number_of_students)
+        break    
+    else:
+        print("please enter a valid number of students")
+#----------- FIRST FUNC-----------
+def display_student_summary():#studentsSummary
+    students_names_and_grades=[]
+    for i in range(number_of_students):
+        while True:#nameConditions
+            name=input(f"enter the name of student{i+1}: ")
+            try:
+                num=float(name)
+                print("this is not a name")
+            except ValueError:
+                print("thanks")
+                break
+
+        while True:#gradeConditions
+            try:
+                grade=int(input(f"enter the grade between 0 and 100 for student{i+1}: "))
+                if 0<= grade<=100:
+                    print("thank you")
+                    break
+                else:
+                    print("the grade should be between 1 and 100")
+            except ValueError:
+                print("please enter a valid grade")
+        students_names_and_grades.append((name,grade))
+    print("the summary of students and their grades")
+    print(students_names_and_grades)
+display_student_summary()
