@@ -41,7 +41,18 @@ def get_avg_grade(students_names_and_grades):
         grades.append(grade)
     average=sum(grades)/len(grades)
     return average
+#-------3rd func------
+def get_highest_grade(students_names_and_grades):
+    highest_grade_student=""
+    highest_grade=0
+    for name,grade in students_names_and_grades:
+        if grade>highest_grade:
+            highest_grade=grade
+            highest_grade_student=name
+    return highest_grade_student ,highest_grade
 #-------calls---------
-students_names_and_grades = display_student_summary()  
+students_names_and_grades = display_student_summary()
 average = get_avg_grade(students_names_and_grades)
-print("Average grade is:", average)    
+print("Average grade is:", average)
+highest_grade_student,highest_grade=get_highest_grade(students_names_and_grades)
+print("the top student is",highest_grade_student,"with the grade:",highest_grade)
