@@ -27,7 +27,7 @@ def display_student_summary():#students summary
                     print("thank you")
                     break
                 else:
-                    print("the grade should be between 1 and 100")
+                    print("the grade should be between 0 and 100")
             except ValueError:
                 print("please enter a valid grade")
         students_names_and_grades.append((name,grade))
@@ -50,9 +50,25 @@ def get_highest_grade(students_names_and_grades):
             highest_grade=grade
             highest_grade_student=name
     return highest_grade_student ,highest_grade
+#-------4th func-----
+def count_passed(students_names_and_grades):
+    if not students_names_and_grades:
+        return 0
+    name, grade=students_names_and_grades[0]
+    other=students_names_and_grades[1:]
+    if grade>=60:
+        return 1 +count_passed(other)
+    else:
+        return 0 +count_passed(other)
+# func for calls
+def all_calls():
+    students_names_and_grades = display_student_summary()
+    average = get_avg_grade(students_names_and_grades)
+    print("Average grade is:", average)
+    highest_grade_student,highest_grade=get_highest_grade(students_names_and_grades)
+    print("the top student is",highest_grade_student,"with the grade:",highest_grade)
+    count=count_passed(students_names_and_grades)
+    print("the number of students that passed is:",count)
+
 #-------calls---------
-students_names_and_grades = display_student_summary()
-average = get_avg_grade(students_names_and_grades)
-print("Average grade is:", average)
-highest_grade_student,highest_grade=get_highest_grade(students_names_and_grades)
-print("the top student is",highest_grade_student,"with the grade:",highest_grade)
+all_calls()
